@@ -1,0 +1,32 @@
+{{extend 'layout.html'}}
+<h1>Это шаблон default/test.html</h1>
+{{=message}}
+
+            
+      <div id="content"></div>  
+      <script>  
+        function show()  
+        {  
+            $.ajax({  
+                url: "testt",  
+                cache: true,  
+                success: function(testt){  
+                    $("#content").html(testt);  
+                }  
+            });  
+        }  
+      
+        $(document).ready(function(){  
+            show(); 
+            setInterval('show()',60000);  
+        });  
+    </script>  
+
+<br>
+<br>
+<hr>
+<br>
+{{=IMG(_src=URL('static','44.png'), _alt="My Logo")}}            
+</body>  
+</html>
+{{=BEAUTIFY(response._vars)}}

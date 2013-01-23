@@ -1,0 +1,3 @@
+#crontab
+#0-59 * * * * root python /home/www-data/web2py/applications/tgmonitor/cron/test_cron.py
+#* *     * * * /home/www-data/web2py/applications/tgmonitor/cron/test_cron.py

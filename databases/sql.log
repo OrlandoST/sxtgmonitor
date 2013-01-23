@@ -1,0 +1,109 @@
+timestamp: 2012-12-13T10:54:51.853466
+CREATE TABLE tg_load(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    check_date TIMESTAMP,
+    tg_number CHAR(17),
+    busy INTEGER,
+    installed INTEGER
+);
+timestamp: 2012-12-13T11:03:45.013603
+CREATE TABLE tg_load(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    check_date TIMESTAMP,
+    tg_number CHAR(17),
+    busy INTEGER,
+    installed INTEGER
+);
+success!
+timestamp: 2012-12-13T11:03:45.019312
+CREATE TABLE tg_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tg_number CHAR(17) NOT NULL,
+    tg_descr CHAR(17),
+    tg_type CHAR(3),
+    color CHAR(16),
+    alarm INTEGER,
+    alarm_email CHAR(20),
+    alarm_call_number CHAR(32)
+);
+success!
+timestamp: 2012-12-13T11:03:45.069659
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    username CHAR(128),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2012-12-13T11:03:45.074325
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-12-13T11:03:45.077717
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-12-13T11:03:45.081817
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2012-12-13T11:03:45.085856
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-12-13T11:03:45.090429
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2012-12-13T11:08:15.859568
+ALTER TABLE tg_list ADD tg_group CHAR(12);
+timestamp: 2012-12-13T16:47:55.394226
+ALTER TABLE tg_list ADD show_color CHAR(20);
+timestamp: 2012-12-27T13:26:25.286224
+CREATE TABLE group_descr(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tg_group CHAR(17),
+    group_description CHAR(17)
+);
+success!
+timestamp: 2012-12-27T15:51:56.503608
+CREATE TABLE gr_descr(
+    tg_group CHAR(17) NOT NULL DEFAULT 'group1' UNIQUE,
+    group_description CHAR(17),
+    PRIMARY KEY(tg_group)) ;
+success!
+timestamp: 2012-12-27T15:58:19.783975
+CREATE TABLE group_descr2(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tg_group CHAR(17) UNIQUE,
+    group_description CHAR(17)
+);
+success!

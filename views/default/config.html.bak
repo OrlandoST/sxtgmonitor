@@ -1,0 +1,5 @@
+{{extend 'layout.html'}}
+укажите тип транк группы ss7 или sip<br>
+<h2>list of monitoring tg</h2>
+
+{{=sqlgrid}}

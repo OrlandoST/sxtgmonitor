@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+
+      <div id="content"></div>  
+      <script>  
+        function show()  
+        {  
+            $.ajax({  
+                url: "get_diagram",  
+                cache: true,  
+                success: function(html){  
+                    $("#content").html(html);  
+                }  
+            });  
+        }  
+      
+        $(document).ready(function(){  
+            show(); 
+            setInterval('show()',60000);  
+        });  
+    </script>  
+
+<br>
+<br>
+<hr>
+<br>
+        
+</body>  
+</html>

@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+<h1>Это шаблон config.html</h1>
+{{=sqlgrid}}
+{{=BEAUTIFY(response._vars)}}
